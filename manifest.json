@@ -1,0 +1,10 @@
+{
+  "name": "J.A.R.V.I.S. AI Assistant",
+  "short_name": "J.A.R.V.I.S.",
+  "description": "A blue holographic personal AI assistant.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#02050d",
+  "theme_color": "#020817"
+}

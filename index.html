@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#020817">
+  <meta name="description" content="J.A.R.V.I.S. personal AI assistant">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>J.A.R.V.I.S.</title>
+</head>
+<body data-state="STANDBY">
+  <div class="grid-bg"></div><div class="scanlines"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="status-dot" id="statusDot"></span><div><h1>J.A.R.V.I.S.</h1><small>PERSONAL AI SYSTEM</small></div></div>
+      <div class="clock"><strong id="clock">--:--</strong><small id="date">INITIALISING</small></div>
+      <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+    </header>
+
+    <section class="reactor-panel">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="side-readout left"><span>CORE TEMP</span><b>NOMINAL</b><span>POWER</span><b>100%</b></div>
+      <div class="reactor-wrap" id="reactor">
+        <svg viewBox="0 0 240 240" aria-hidden="true">
+          <defs><radialGradient id="core"><stop offset="0" stop-color="#eaffff"/><stop offset=".2" stop-color="#5cecff"/><stop offset=".58" stop-color="#087dff" stop-opacity=".6"/><stop offset="1" stop-color="#00152d" stop-opacity="0"/></radialGradient></defs>
+          <circle class="ring ring-a" cx="120" cy="120" r="105"/>
+          <circle class="ring ring-b" cx="120" cy="120" r="91"/>
+          <circle class="ring ring-c" cx="120" cy="120" r="76"/>
+          <circle class="ring ring-d" cx="120" cy="120" r="58"/>
+          <path class="ticks" d="M120 4v16 M120 220v16 M4 120h16 M220 120h16 M38 38l12 12 M190 190l12 12 M202 38l-12 12 M50 190l-12 12"/>
+          <circle class="core-glow" cx="120" cy="120" r="48" fill="url(#core)"/>
+          <circle class="core" cx="120" cy="120" r="20"/>
+          <circle cx="120" cy="120" r="5" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="side-readout right"><span>NETWORK</span><b id="networkStatus">CHECKING</b><span>SECURITY</span><b>ACTIVE</b></div>
+      <div class="state-line"><span>[</span><strong id="stateLabel">STANDBY</strong><span>]</span></div>
+      <p id="transcript" class="transcript">Systems ready. Awaiting your command.</p>
+      <div class="wave" id="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+
+    <section class="chat-area" id="chat" aria-live="polite">
+      <article class="message assistant"><small>J.A.R.V.I.S. · SYSTEM</small><p>Good day. All systems are standing by. How may I assist you?</p></article>
+    </section>
+
+    <footer class="command-area">
+      <form id="chatForm">
+        <input id="messageInput" maxlength="3000" autocomplete="off" placeholder="Enter a command, Sir..." aria-label="Message JARVIS">
+        <button class="send-btn" type="submit" aria-label="Send">➤</button>
+      </form>
+      <button id="micBtn" class="mic-btn" aria-label="Start voice input"><span>🎙</span></button>
+    </footer>
+    <div class="bottom-note"><span>J.A.R.V.I.S. ONLINE</span><span>VOICE · AI · INTERFACE</span></div>
+  </main>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" class="dialog-head"><h2>SYSTEM SETTINGS</h2><button class="icon-btn" aria-label="Close">✕</button></form>
+    <div class="settings-content">
+      <label class="setting"><span>Spoken responses</span><input type="checkbox" id="voiceToggle" checked></label>
+      <label class="setting"><span>Speech speed <b id="rateValue">1.0×</b></span><input type="range" id="speechRate" min=".75" max="1.25" step=".05" value="1"></label>
+      <button class="clear-btn" id="clearChat" type="button">CLEAR CONVERSATION</button>
+      <p class="privacy-note">Microphone access is requested only when you tap the microphone. Your Gemini key stays on the server and must never be pasted into this page.</p>
+    </div>
+  </dialog>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
